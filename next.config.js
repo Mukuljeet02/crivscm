@@ -8,6 +8,9 @@ try {
 }
 
 /** @type {import('next').NextConfig} */
+module.exports = {
+  basePath: '/docs',
+},
 const nextConfig = {
   output: "export",
   typescript: {
