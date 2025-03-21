@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import './globals.css'
+import '../styles/globals.css' // Ensure correct path
 
 export const metadata: Metadata = {
   title: 'v0 App',
@@ -14,6 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="/crivscm/styles/globals.css" />
+      </head>
       <body>{children}</body>
     </html>
   )
