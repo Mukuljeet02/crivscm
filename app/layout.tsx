@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
-import '../styles/globals.css' // ✅ Adjust the path if needed
+
+import '../styles/globals.css';  // ✅ If in styles/ folder
+
+
 
 export const metadata: Metadata = {
   title: 'v0 App',
