@@ -8,10 +8,8 @@ try {
 }
 
 /** @type {import('next').NextConfig} */
-module.exports = {
-  basePath: '/docs',
-},
 const nextConfig = {
+  reactStrictMode: true,
   output: "export",
   typescript: {
     ignoreBuildErrors: true,
@@ -27,21 +25,19 @@ const nextConfig = {
 };
 
 // Merge user config if it exists
-mergeConfig(nextConfig, userConfig);
+if (userConfig) {
+  mergeConfig(nextConfig, userConfig);
+}
 
-function mergeConfig(nextConfig, userConfig) {
-  if (!userConfig) {
-    return;
-  }
-
+function mergeConfig(baseConfig, userConfig) {
   for (const key in userConfig) {
-    if (typeof nextConfig[key] === "object" && !Array.isArray(nextConfig[key])) {
-      nextConfig[key] = {
-        ...nextConfig[key],
+    if (typeof baseConfig[key] === "object" && !Array.isArray(baseConfig[key])) {
+      baseConfig[key] = {
+        ...baseConfig[key],
         ...userConfig[key],
       };
     } else {
-      nextConfig[key] = userConfig[key];
+      baseConfig[key] = userConfig[key];
     }
   }
 }
