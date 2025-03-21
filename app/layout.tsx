@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import '../styles/globals.css' // Ensure correct path
+import '../styles/globals.css' // ✅ Adjust the path if needed
 
 export const metadata: Metadata = {
   title: 'v0 App',
@@ -9,13 +9,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="/crivscm/styles/globals.css" />
+        <link rel="stylesheet" href="/crivscm/globals.css" />
       </head>
       <body>{children}</body>
     </html>

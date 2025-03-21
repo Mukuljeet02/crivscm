@@ -14,19 +14,13 @@ const nextConfig = {
   output: "export",
   basePath: isProd ? "/crivscm" : "",
   assetPrefix: isProd ? "/crivscm/" : "",
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
-    unoptimized: true,
+    unoptimized: true, // ✅ Fixes images on GitHub Pages
   },
-  experimental: {
-    webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
-  },
+  trailingSlash: true, // ✅ Ensures paths work correctly
 };
 
+module.exports = nextConfig;
 // Merge user config if it exists
 if (userConfig) {
   mergeConfig(nextConfig, userConfig);

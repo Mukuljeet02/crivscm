@@ -26,22 +26,21 @@ export default function EnhancedCRIvsCRMComparison() {
   // Handle scroll to track active section and sticky nav
   useEffect(() => {
     const handleScroll = () => {
-      // Make navigation sticky after scrolling past hero
-      setIsNavSticky(window.scrollY > 300)
-
-      // Determine active section based on scroll position
-      const sections = document.querySelectorAll("section[id]")
+      const sections = document.querySelectorAll("section[id]");
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop
-        if (window.scrollY >= sectionTop - 100) {
-          setActiveSection(section.getAttribute("id") || "intro")
+        if (section instanceof HTMLElement) {
+          const sectionTop = section.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            setActiveSection(section.getAttribute("id") || "intro");
+          }
         }
-      })
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      });
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []); // ✅ Fixed missing semicolon & syntax
+  
 
   // Scroll to section function
   const scrollToSection = (sectionId: string) => {
